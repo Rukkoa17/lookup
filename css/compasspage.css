@@ -1,0 +1,94 @@
+body {
+   position: relative;
+   min-height: 100vh;
+}
+
+
+/* Background + his Opacity */
+
+@media(max-width : 768px ){
+   body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("../imglookup/firstfondstar.png") center / cover no-repeat;
+      opacity: 0.4; /* ← ajuste ici */
+      z-index: -1;
+   }
+
+   #planetandcompass-container{
+      height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+   }
+
+   .circle{
+      height: 100px;
+      width: 100px;
+      background-color: #bbb;
+      display: inline-block;
+   }
+
+   #image-section{  
+      z-index: 2; 
+      margin-top: 8vh;
+      align-self: center;
+   }
+
+   #image-of-planet{
+      height: 11em;
+   }
+
+   #compass-section{
+      margin-top: 10Vh;
+      align-self: center;
+   }
+
+   
+
+}
+
+@media (min-width : 768px){
+   body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 110%;
+      height: 100%;
+      background: url("../imglookup/1rotastars.png") center / cover no-repeat;
+      opacity: 0.5; /* ← ajuste ici */
+      z-index: -1;
+   }
+
+   #planetandcompass-container{
+      height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+   }
+
+   #image-section{  
+      z-index: 2; 
+      margin-top: 8vh;
+      align-self: center;
+   }
+
+   #image-of-planet{
+      height: 9em;
+   }
+
+   #compass-section{
+      margin-top: 7Vh;
+      align-self: center;
+   }
+
+   #compass{
+      height:18em;
+   }
+}
+   

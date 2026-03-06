@@ -1,0 +1,19 @@
+/* Dark/Light mode palets*/
+
+:root{
+
+   --base-color : rgb(0, 0, 0);
+   --base-colorvar : rgb(37, 37, 37);
+   --text-color: white;
+
+   /*Planets "color" to fit better with the panels, surely not the best way to do it , srry
+   --mercure-color : rgb(58, 57, 57);
+   --venus-color : rgb(154, 125, 9);*/
+}
+
+.lightmode{
+
+   --base-color : rgb(255, 255, 255);
+   --base-colorvar : rgb(199, 194, 194);
+   --text-color: rgb(0, 0, 0);
+}

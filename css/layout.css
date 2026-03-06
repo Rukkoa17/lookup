@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Mansalva&display=swap');
+
+#header{
+   display: flex;
+   justify-content: space-between;
+   margin: 3vh;
+   padding: 5px;
+}
+
+.header-btn{
+   cursor: pointer;
+}
+
+#theme-switch{
+   height:50px;
+   width:50px;
+   padding:0;
+   border-radius: 50%;
+   background-color: var(--base-colorvar);
+   display: flex;
+   justify-content: center;
+   align-items: center;
+
+}
+
+#theme-switch svg{
+   fill: var(--text-color)
+}
+
+#theme-switch svg:last-child{
+   display: none;
+}
+
+.lightmode #theme-switch svg:first-child{
+   display: none;
+}
+
+.lightmode #theme-switch svg:last-child{
+   display: block;
+}
+
+
+hr {
+   border: 1.5px solid var(--text-color);
+   width: 80vw;
+   margin: 2px auto;
+   margin-top: -2vh;
+}
+
+
+
+@keyframes spin {
+   from {translate: 0;}
+   to {translate : -300%}
+}

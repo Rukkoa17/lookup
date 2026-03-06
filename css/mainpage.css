@@ -1,0 +1,213 @@
+
+@media (max-width : 768px){
+
+   
+   #carrousel-planets{
+      margin-top: 7vh;
+      display: flex;
+      overflow-x: auto;
+   }
+   
+   #carrousel-planets::-webkit-scrollbar {
+      display: none;
+   }
+
+   .carrousel-slide{
+      border-top: 1px solid var(--text-color);
+      border-bottom: 1px solid var(--text-color);
+      flex: 0 0 65%;
+      height: 55vh;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      /*animation: spin 15s infinite linear; l'idée est cool mais pas pratique , on met de côté*/
+   }
+
+   /*Stars background of each slide*/
+   #mercure-slide{
+      background-image: url(../imglookup/firstfondstar.png);
+      background-size: 105%;
+      background-position: center;
+   }
+
+   #venus-slide{
+      background-image: url(../imglookup/2emefondstars.png);
+      background-size: 110%;
+      background-position: center;
+   }
+
+   #earth-slide{
+      background-image: url(../imglookup/3emefondstars.png);
+      background-size: 105%;
+      background-position: center;
+   }
+
+   .sketch{
+      transition: transform .3s;
+   }
+
+   .sketch:hover{
+      transform: scale(1.25)
+   }
+
+   .panel{
+      background-color: var(--base-colorvar);
+      opacity: 0;
+      display: flex;
+      text-align: center;
+      font-size: 0.9em;
+      width: 65%;
+      height: 28%;
+      padding: 5px;
+      border-radius: 7%;
+      z-index: -1;
+      transition: all 0.3s ease-in-out; 
+      border: 1px solid var(--text-color);
+   }
+
+   .panel.open{
+      opacity: 1;
+      z-index: 999;
+   }
+
+   .panel-lookup-btn{
+      margin-top: 0.5em;
+      padding: 0.2em;
+      font-size: 1.4em;
+      font-family: "Mansalva", sans-serif;
+      font-weight: 600;
+      height: 25%;
+      width: 70%;
+   }
+
+   #mercure-sketch{
+      height: 4em;
+   }
+
+   #venus-sketch{
+      height: 6em;
+   }
+
+   #earth-sketch{
+      height:6em;
+      width:6em
+   }
+
+}
+
+@media (min-width : 769px) {
+
+   #carrousel-planets{
+      margin-top: 5vh;
+      display: flex;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+   }
+   #carrousel-planets::-webkit-scrollbar {
+      display: none;
+   }
+
+   .carrousel-slide{
+      background-color: var(--base-color); /*Ici il faudra rajouter le fond étoilé !*/
+      border-top: 1px solid var(--text-color);
+      border-bottom: 1px solid var(--text-color);
+      height: 60vh;
+      width: 100%;
+      flex : 0 0 40%;
+      object-position: center;
+      transform: translate(0% , 0);
+      /*animation: spin 15s infinite linear; l'idée est cool mais pas pratique , on met de côté*/
+   }
+
+   #carrousel-planets {
+   cursor: grab;
+   }
+
+   #carrousel-planets:active {
+   cursor: grabbing;
+   }
+
+   /*START --Stars background of each slide--*/
+   #mercure-slide{
+      background-image: url(../imglookup/1rotastars.png);
+      background-size: 104%;
+      background-position: center;
+   }
+
+   #venus-slide{
+      background-image: url(../imglookup/2rotastars.png);
+      background-size: 110%;
+      background-position: center;
+   }
+
+   #earth-slide{
+      background-image: url(../imglookup/2rotastars.png);
+      background-size: 100%;
+      background-position: center;
+   }
+
+
+   /*END --Stars background of each slide--*/
+
+   .sketch{
+      cursor: pointer;
+      transition: transform .3s;
+   }
+
+   .sketch:hover{
+      transform: scale(1.25)
+
+   }
+
+   .panel{
+      background-color: var(--base-colorvar);
+      opacity: 0;
+      display: flex;
+      position: absolute;
+      text-align: center;
+      font-size: 0.7em;
+      width: 40%;
+      height: 30%;
+      padding: 5px;
+      border-radius: 25px;
+      z-index: -1;
+      transition: all 0.3s ease-in-out; 
+      border: 1px solid var(--text-color);
+   }
+
+   .panel.open{
+      opacity: 1;
+      z-index: 999;
+   }
+
+   form{
+      display: inline;
+   }
+
+   .panel-lookup-btn{
+      background-color: var(--text-color);
+      cursor: pointer;
+      margin-top: 1em;
+      font-size: 1.5em;
+      font-family: "Mansalva", sans-serif;
+      font-weight: 600;
+      padding: 0.1em;
+      height: 30%;
+      width: 70%;                      
+   }
+
+   #mercure-sketch{
+      height: 5em;
+   }
+
+   #venus-sketch{
+      height: 7em;
+   }
+
+   #earth-sketch{
+      height:7em;
+      width:7em
+   }
+
+}

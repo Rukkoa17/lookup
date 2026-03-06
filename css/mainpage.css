@@ -1,7 +1,6 @@
 
 @media (max-width : 768px){
 
-   
    #carrousel-planets{
       margin-top: 7vh;
       display: flex;
@@ -36,7 +35,7 @@
       background-position: center;
    }
 
-   #earth-slide{
+   #moon-slide{
       background-image: url(../imglookup/3emefondstars.png);
       background-size: 105%;
       background-position: center;
@@ -81,18 +80,42 @@
    }
 
    #mercure-sketch{
-      height: 4em;
+      height: 5em;
    }
 
    #venus-sketch{
-      height: 6em;
+      height: 7em;
    }
 
-   #earth-sketch{
-      height:6em;
-      width:6em
+   #moon-sketch{
+      height:7em;
+      width:7em
    }
 
+   #mars-sketch{
+      height:7em;
+      width:7em
+   }
+
+   #jupiter-sketch{
+      height:11em;
+      width:11em
+   }
+
+   #saturn-sketch{
+      height:14em;
+      width:14em
+   }
+
+   #uranus-sketch{
+      height:7em;
+      width:7em
+   }
+
+   #neptune-sketch{
+      height:7em;
+      width:7em
+   }
 }
 
 @media (min-width : 769px) {

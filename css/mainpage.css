@@ -5,10 +5,12 @@
       margin-top: 7vh;
       display: flex;
       overflow-x: auto;
+      background-image: url("../imglookup/3rotastars.png");
    }
    
    #carrousel-planets::-webkit-scrollbar {
       display: none;
+      
    }
 
    .carrousel-slide{
@@ -16,29 +18,7 @@
       border-bottom: 1px solid var(--text-color);
       flex: 0 0 65%;
       height: 55vh;
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
       /*animation: spin 15s infinite linear; l'idée est cool mais pas pratique , on met de côté*/
-   }
-
-   /*Stars background of each slide*/
-   #mercure-slide{
-      background-image: url(../imglookup/firstfondstar.png);
-      background-size: 105%;
-      background-position: center;
-   }
-
-   #venus-slide{
-      background-image: url(../imglookup/2emefondstars.png);
-      background-size: 110%;
-      background-position: center;
-   }
-
-   #moon-slide{
-      background-image: url(../imglookup/3emefondstars.png);
-      background-size: 105%;
-      background-position: center;
    }
 
    .sketch{

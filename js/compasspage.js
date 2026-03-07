@@ -8,7 +8,7 @@ theplanetimage.src = theplanet.planetimg;
 //Script for the compass (some datas included for easier readability)
 
 const compassCircle = document.querySelector("#compass");
-const myPoint = document.querySelector("#image-of-planet");
+const orbit = document.querySelector("#image-of-planet");
 const userisIOS =
    navigator.userAgent.match(/(iPod|iPhone|iPad)/) &&
    navigator.userAgent.match(/AppleWebKit/);
@@ -34,33 +34,25 @@ function start() {
    }
 }
 
-let current = 20;
+let current = 0;
 let pointdeg = theplanet.planetAzimuth;
 
-
-compassCircle.style.transform = ` rotate(${-current}deg)`
-
-
 function handler(e) {
+
    let rawComp = e.webkitCompassHeading || Math.abs(e.alpha - 360);
    let normalizedCompass = rawComp % 360;
-   if(normalizedCompass < 0) {
-      normalizedCompass += 360; //not going below 0 , maybe 360 - abs value
+
+   if(normalizedCompass < 0){
+      normalizedCompass += 360;
    }
 
-   let rotationdiff = normalizedCompass - current;
-
-   //Adjust for 0 & 360
-   if (Math.abs(rotationdiff) > 180) {
-      rotationdiff = rotationdiff > 0 ? rotationdiff - 360 : rotationdiff + 360;
-   }
-
-   current += rotationdiff;
-   compassCircle.style.transform = `rotate(${-current}deg)`;
+   compassCircle.style.transform =
+   `rotate(${-normalizedCompass}deg)`;
 
    let pointdiff = pointdeg - normalizedCompass;
-   console.log(pointdiff)
-   pointdeg.style.transform = `translate(-50%, -50%) rotate(${pointdiff}deg)`
+
+   orbit.style.transform =
+   `translate(-50%, -50%) rotate(${pointdiff}deg)`;
 }
 
 //put the planet where needed 

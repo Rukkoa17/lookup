@@ -3,7 +3,6 @@ body {
    min-height: 100vh;
 }
 
-
 /* Background + his Opacity */
 
 @media(max-width : 768px ){
@@ -34,23 +33,30 @@ body {
    }
 
    #image-section{  
-      z-index: 2; 
-      margin-top: 8vh;
       align-self: center;
+      margin-top: 15vh;
    }
 
    #image-of-planet{
       height: 11em;
+      position:absolute;
+      top:20vh;
+      left:50%;
+      transform:translateX(-50%);
    }
 
    #compass-section{
-      margin-top: 10Vh;
+      margin-top: 20Vh;
       align-self: center;
    }
 
-   
+   #compass {
+      height: 35vh;
+   }
 
 }
+
+
 
 @media (min-width : 768px){
    body::before {
@@ -73,9 +79,12 @@ body {
    }
 
    #image-section{  
-      z-index: 2; 
-      margin-top: 8vh;
-      align-self: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 250px;
+      height: 250px;
+      transform: translate(-50%, -50%);
    }
 
    #image-of-planet{
@@ -83,7 +92,7 @@ body {
    }
 
    #compass-section{
-      margin-top: 7Vh;
+      margin-top: 37Vh;
       align-self: center;
    }
 

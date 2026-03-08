@@ -7,7 +7,6 @@ theplanetimage.src = theplanet.planetimg;
 const compassCircle = document.querySelector("#compass");
 const orbit = document.querySelector("#image-section");
 
-
 // azimuth of the planet
 let pointdeg = theplanet.planetAzimuth;
 

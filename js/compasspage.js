@@ -8,69 +8,39 @@ const compassCircle = document.querySelector("#compass");
 const orbit = document.querySelector("#image-section");
 
 // azimuth of the planet
-let pointdeg = 90; 
-
-const userisIOS =
-navigator.userAgent.match(/(iPod|iPhone|iPad)/) &&
-navigator.userAgent.match(/AppleWebKit/);
-
-// start
-function init(){
-
-   start();
-
-   if(!userisIOS){
-      window.addEventListener("deviceorientation", handler, true);
-   }
-}
-
-// ios permission
-function start(){
-
-   if(userisIOS){
-
-      DeviceOrientationEvent.requestPermission()
-      .then((response)=>{
-
-         if(response === "granted"){
-            window.addEventListener("deviceorientation", handler, true);
-         }
-
-      })
-      .catch(()=> alert("device not supported"));
-   }
-}
+let pointdeg = 90;
 
 // handler
 function handler(e){
 
-   let rawComp = e.webkitCompassHeading || (360 - e.alpha);
-   let normalizedCompass = rawComp % 360;
+   let rawComp = e.webkitCompassHeading ?? (360 - e.alpha);
 
-   if(normalizedCompass < 0){
-      normalizedCompass += 360;
-   }
+   if(rawComp == null) return;
 
-   // rotate compass
+   let compass = rawComp % 360;
+
    compassCircle.style.transform =
-   `rotate(${-normalizedCompass}deg)`;
+   `rotate(${-compass}deg)`;
 
-   // difference user / planet
-   let difference = pointdeg - normalizedCompass;
+   let difference = pointdeg - compass;
 
-   let rad = difference * (Math.PI / 180);
+   let rad = difference * Math.PI / 180;
 
-   // orbit radius
-   let radius = 120;
+   let radius = 150;
 
    let x = radius * Math.sin(rad);
    let y = -radius * Math.cos(rad);
 
    orbit.style.transform =
-   `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`;
+   `translate(-50%, -50%) translate(${x}px, ${y}px)`;
 }
 
-init();
+window.addEventListener("deviceorientation", handler, true);
+
+// test rotation
+setInterval(()=>{
+   pointdeg = (pointdeg + 2) % 360;
+},50);
 //put the planet where needed 
 //ye.
 

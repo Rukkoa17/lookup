@@ -51,15 +51,16 @@ function handler(e) {
    `rotate(${-normalizedCompass}deg)`;
 
    //difference User/Planet
-   let difference = pointdeg - normalizedCompass;
+   let difference = pointdeg - normalizedCompass;o.style.transf
+   console.log(difference);
 
    let rad = difference * (Math.PI / 180);
 
    let x = 75 * Math.sin(rad); // the val before * should be radius , for esthetic purposes it's not
    let y = -35 * Math.cos(rad);
 
-   theplanetimage.style.transform =
-   `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`;
+   orbit.style.transform =
+   `translate(calc(-50% + ${x}vw), calc(-50% + ${y}vh))`;
 };
 
 init();
@@ -72,7 +73,7 @@ let test = 0;
 setInterval(()=>{
    test += 5;
 
-   let rad = radius * (Math.PI / 180);
+   let rad = test  * (Math.PI / 180);
 
    let x = 75 * Math.sin(rad);
    let y = -35 * Math.cos(rad);

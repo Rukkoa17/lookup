@@ -33,26 +33,24 @@ body {
    }
 
    #image-section{  
-      position:absolute;
-      bottom:40vh;
-      left:50%;
+      position: absolute;
+      top: 55%;
+      align-self: center;
       width:11.5em;
       height:11.5em;
-      transform:translate(-50%, -50%);
       background-color: rgba(0,255,0,0.2);
    }
 
    #image-of-planet{
-      position:absolute;
+      position: absolute;
+      left: 50%;
+      align-self: center;
+      margin: 5vh auto;
       height:11em;
-      top:50%;
-      left:50%;
-      transform:translate(-50%, -50%);
-      background-color: rgba(255,0,0,0.2);
    }
 
    #compass-section{
-      margin-top: 37.5Vh;
+      margin-top: 85%;
       align-self: center;
    }
 

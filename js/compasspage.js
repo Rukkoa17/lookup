@@ -35,8 +35,7 @@ function start() {
    }
 }
 
-let pointdeg = 90; // azimuth of planet in the sky
-let radius = 120; // orbit R
+let pointdeg = 0; // azimuth of planet in the sky
 
 function handler(e) {
 
@@ -54,17 +53,31 @@ function handler(e) {
    //difference User/Planet
    let difference = pointdeg - normalizedCompass;
 
-   // degrees → radians
-   let rad = difference * (Math.PI / 180);
+   let rad = radius * (Math.PI / 180);
 
-   let x = radius * Math.sin(rad);
-   let y = -radius * Math.cos(rad);
+   let x = 75 * Math.sin(rad);
+   let y = -35 * Math.cos(rad);
 
    theplanetimage.style.transform =
    `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`;
-}
+};
 
 init();
 //put the planet where needed 
 //ye.
 
+/*
+let test = 0;
+
+setInterval(()=>{
+   test += 5;
+
+   let rad = radius * (Math.PI / 180);
+
+   let x = 75 * Math.sin(rad);
+   let y = -35 * Math.cos(rad);
+
+   theplanetimage.style.transform =
+   `translate(calc(-50% + ${x}vw), calc(-50% + ${y}vh))`;
+},50);
+*/

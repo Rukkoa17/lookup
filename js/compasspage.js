@@ -59,7 +59,7 @@ function handler(e) {
    let x = 75 * Math.sin(rad); // the val before * should be radius , for esthetic purposes it's not
    let y = -35 * Math.cos(rad);
 
-   orbit.style.transform =
+   theplanetimage.style.transform =
    `translate(calc(-50% + ${x}vw), calc(-50% + ${y}vh))`;
 };
 
@@ -67,8 +67,8 @@ init();
 //put the planet where needed 
 //ye.
 
-/*
-let test = 0;
+
+/*let test = 0;
 
 setInterval(()=>{
    test += 5;

@@ -10,61 +10,71 @@ const orbit = document.querySelector("#image-section");
 // azimuth of the planet
 let pointdeg = theplanet.planetAzimuth;
 
-//placing the planet beofre running the compass
-let radplace = pointdeg  * (Math.PI / 180);
+// place the planet before compass starts
+function placePlanet(compass) {
+  let difference = pointdeg - compass;
+  let rad = difference * Math.PI / 180;
+  let x = 75 * Math.sin(rad);
+  let y = -30 * Math.cos(rad);
+  orbit.style.transform = `translate(calc(-50% + ${x}vw), calc(-50% + ${y}vh))`;
+}
 
+// initial static placement (before compass runs)
+let radplace = pointdeg * (Math.PI / 180);
 let x = 75 * Math.sin(radplace);
 let y = -30 * Math.cos(radplace);
+orbit.style.transform = `translate(calc(-50% + ${x}vw), calc(-50% + ${y}vh))`;
 
-orbit.style.transform =
-`translate(calc(-50% + ${x}vw), calc(-50% + ${y}vh))`;
-
-const userisIOS =
-   navigator.userAgent.match(/(iPod|iPhone|iPad)/) && 
-   navigator.userAgent.match(/AppleWebKit/);
-
-function init() {
-   start(); //Starting before trying for !IOS ; unsure that both cases are dealed with
-   if (!userisIOS){
-      window.addEventListener("deviceorientationabsolute", handler , true); //Pass to handler before the other functions
-   }
-}
-
-function start() {
-   if(userisIOS){
-      DeviceOrientationEvent.requestPermission()
-      .then((response) => {
-         if (response === "granted"){
-            window.addEventListener("deviceorientationabsolute" , handler , true); //Pass to handler before the other functions
-         } else {
-            alert("can't LookUP then...");
-         }
-      })
-      .catch(() => alert("device isn't supported.."));
-   }
-}
+const isIOS =
+  /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
 // handler
-function handler(e){
+function handler(e) {
+  let rawComp = e.webkitCompassHeading ?? (360 - e.alpha);
+  if (rawComp == null) return;
+  let compass = rawComp % 360;
 
-   let rawComp = e.webkitCompassHeading ?? (360 - e.alpha);
+  compassCircle.style.transform = `rotate(${-compass}deg)`;
+  placePlanet(compass);
+}
 
-   if(rawComp == null) return;
+function startListening() {
+  // Try absolute first, fall back to regular deviceorientation
+  window.addEventListener("deviceorientationabsolute", handler, true);
+  window.addEventListener("deviceorientation", handler, true);
+}
 
-   let compass = rawComp % 360;
+function init() {
+  if (isIOS) {
+    // iOS: MUST be triggered by a user gesture (button tap)
+    const btn = document.createElement("button");
+    btn.innerText = "🔭 Enable Compass";
+    btn.style.cssText = `
+      position: fixed; bottom: 30px; left: 50%;
+      transform: translateX(-50%);
+      padding: 12px 24px; font-size: 16px;
+      background: rgba(255,255,255,0.15);
+      color: white; border: 1px solid white;
+      border-radius: 20px; z-index: 9999; cursor: pointer;
+    `;
+    document.body.appendChild(btn);
 
-   compassCircle.style.transform =
-   `rotate(${-compass}deg)`;
-
-   let difference = pointdeg - compass;
-
-   let rad = difference * Math.PI / 180;
-
-   let x = 75 * Math.sin(rad);
-   let y = -30 * Math.cos(rad);
-
-   orbit.style.transform =
-   `translate(calc(-50% + ${x}vw), calc(-50% + ${y}vh))`;
+    btn.addEventListener("click", () => {
+      DeviceOrientationEvent.requestPermission()
+        .then((response) => {
+          if (response === "granted") {
+            startListening();
+            btn.remove();
+          } else {
+            alert("Compass permission denied.");
+          }
+        })
+        .catch(() => alert("Device not supported."));
+    });
+  } else {
+    // Android & desktop: just start listening
+    startListening();
+  }
 }
 
 init();

@@ -7,46 +7,67 @@ theplanetimage.src = theplanet.planetimg;
 const compassCircle = document.querySelector("#compass");
 const orbit = document.querySelector("#image-section");
 
-// azimuth of the planet
+// azimuth of the planet (e.g. 90 = East)
 let pointdeg = theplanet.planetAzimuth;
 
-// place the planet before compass starts
+// --- Prevent double-firing from both event types ---
+let listenerAttached = false;
+
 function placePlanet(compass) {
-  let difference = pointdeg - compass;
-  let rad = difference * Math.PI / 180;
-  let x = 75 * Math.sin(rad);
-  let y = -30 * Math.cos(rad);
+  // Shortest angular difference, range -180 to +180
+  let difference = ((pointdeg - compass + 540) % 360) - 180;
+
+  let rad = difference * (Math.PI / 180);
+
+  // x: sin(rad) → -1 at left, 0 at center, +1 at right
+  // y: cos(rad) → -1 at top (facing it), +1 at bottom (behind)
+  let x = 40 * Math.sin(rad);   // 40vw max offset left/right
+  let y = -35 * Math.cos(rad);  // 35vh max offset top/bottom
+
   orbit.style.transform = `translate(calc(-50% + ${x}vw), calc(-50% + ${y}vh))`;
 }
 
-// initial static placement (before compass runs)
-let radplace = pointdeg * (Math.PI / 180);
-let x = 75 * Math.sin(radplace);
-let y = -30 * Math.cos(radplace);
-orbit.style.transform = `translate(calc(-50% + ${x}vw), calc(-50% + ${y}vh))`;
+// Initial static placement (compass = 0, facing North by default)
+placePlanet(0);
 
-const isIOS =
-  /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-
-// handler
+// --- Handler ---
 function handler(e) {
   let rawComp = e.webkitCompassHeading ?? (360 - e.alpha);
   if (rawComp == null) return;
+
   let compass = rawComp % 360;
 
+  // Rotate the compass rose
   compassCircle.style.transform = `rotate(${-compass}deg)`;
+
+  // Move the planet
   placePlanet(compass);
 }
 
+// --- Start listening (only attach ONCE) ---
 function startListening() {
-  // Try absolute first, fall back to regular deviceorientation
-  window.addEventListener("deviceorientationabsolute", handler, true);
-  window.addEventListener("deviceorientation", handler, true);
+  if (listenerAttached) return;
+  listenerAttached = true;
+
+  // Prefer absolute (true North), fall back to relative
+  let useAbsolute = false;
+
+  window.addEventListener("deviceorientationabsolute", (e) => {
+    if (e.isTrusted) useAbsolute = true;
+    handler(e);
+  }, true);
+
+  window.addEventListener("deviceorientation", (e) => {
+    if (!useAbsolute) handler(e); // Only use this if absolute isn't firing
+  }, true);
 }
+
+// --- iOS permission gate ---
+const isIOS =
+  /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
 function init() {
   if (isIOS) {
-    // iOS: MUST be triggered by a user gesture (button tap)
     const btn = document.createElement("button");
     btn.innerText = "🔭 Enable Compass";
     btn.style.cssText = `
@@ -71,8 +92,8 @@ function init() {
         })
         .catch(() => alert("Device not supported."));
     });
+
   } else {
-    // Android & desktop: just start listening
     startListening();
   }
 }

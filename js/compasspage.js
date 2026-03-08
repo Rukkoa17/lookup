@@ -56,7 +56,7 @@ function handler(e) {
    let x = rad * Math.sin(rad);
    let y = -rad * Math.cos(rad);
 
-   theplanetimage.style.transform =
+   orbit.style.transform =
    `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`;
 }
 

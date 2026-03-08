@@ -1,67 +1,74 @@
-//Script for changing the planet that is displayed to match with the URL Parameter
-
+// planet data
 const theplanet = planets[planetID];
-
 const theplanetimage = document.getElementById("image-of-planet");
 theplanetimage.src = theplanet.planetimg;
 
-//Script for the compass (some datas included for easier readability)
-
+// elements
 const compassCircle = document.querySelector("#compass");
 const orbit = document.querySelector("#image-section");
 
+// azimuth of the planet
+let pointdeg = 90; 
+
 const userisIOS =
-   navigator.userAgent.match(/(iPod|iPhone|iPad)/) &&
-   navigator.userAgent.match(/AppleWebKit/);
+navigator.userAgent.match(/(iPod|iPhone|iPad)/) &&
+navigator.userAgent.match(/AppleWebKit/);
 
-function init() {
+// start
+function init(){
+
    start();
-   if (!userisIOS){
-      window.addEventListener("deviceorientationabsolute", handler , true);
+
+   if(!userisIOS){
+      window.addEventListener("deviceorientation", handler, true);
    }
 }
 
-function start() {
+// ios permission
+function start(){
+
    if(userisIOS){
+
       DeviceOrientationEvent.requestPermission()
-      .then((response) => {
-         if (response === "granted"){
-            window.addEventListener("deviceorientationabsolute" , handler , true);
-         } else {
-            alert("can't LookUP then...");
+      .then((response)=>{
+
+         if(response === "granted"){
+            window.addEventListener("deviceorientation", handler, true);
          }
+
       })
-      .catch(() => alert("device isn't supported.."));
+      .catch(()=> alert("device not supported"));
    }
 }
 
-let pointdeg = 0; // azimuth of planet in the sky
+// handler
+function handler(e){
 
-function handler(e) {
-
-   let rawComp = e.webkitCompassHeading || Math.abs(e.alpha - 360);
+   let rawComp = e.webkitCompassHeading || (360 - e.alpha);
    let normalizedCompass = rawComp % 360;
 
    if(normalizedCompass < 0){
       normalizedCompass += 360;
    }
 
-   // rotation compass
+   // rotate compass
    compassCircle.style.transform =
    `rotate(${-normalizedCompass}deg)`;
 
-   //difference User/Planet
-   let difference = pointdeg - normalizedCompass;o.style.transf
-   console.log(difference);
+   // difference user / planet
+   let difference = pointdeg - normalizedCompass;
 
    let rad = difference * (Math.PI / 180);
 
-   let x = 75 * Math.sin(rad); // the val before * should be radius , for esthetic purposes it's not
-   let y = -35 * Math.cos(rad);
+   // orbit radius
+   let radius = 120;
 
-   theplanetimage.style.transform =
-   `translate(calc(-50% + ${x}vw), calc(-50% + ${y}vh))`;
-};
+   let x = radius * Math.sin(rad);
+   let y = -radius * Math.cos(rad);
+
+   orbit.style.transform =
+   `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`;
+}
 
 init();
 //put the planet where needed 

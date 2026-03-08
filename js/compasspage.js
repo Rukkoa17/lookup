@@ -15,9 +15,9 @@ const userisIOS =
    navigator.userAgent.match(/AppleWebKit/);
 
 function init() {
-   start(); //Starting before trying for !IOS ; unsure that both cases are dealed with
+   start();
    if (!userisIOS){
-      window.addEventListener("deviceorientationabsolute", handler , true); //Pass to handler before the other functions
+      window.addEventListener("deviceorientationabsolute", handler , true);
    }
 }
 
@@ -26,7 +26,7 @@ function start() {
       DeviceOrientationEvent.requestPermission()
       .then((response) => {
          if (response === "granted"){
-            window.addEventListener("deviceorientationabsolute" , handler , true); //Pass to handler before the other functions
+            window.addEventListener("deviceorientationabsolute" , handler , true);
          } else {
             alert("can't LookUP then...");
          }
@@ -34,6 +34,9 @@ function start() {
       .catch(() => alert("device isn't supported.."));
    }
 }
+
+let pointdeg = 90; // azimuth of planet in the sky
+let radius = 120; // orbit R
 
 function handler(e) {
 
@@ -44,24 +47,24 @@ function handler(e) {
       normalizedCompass += 360;
    }
 
-   //rotation of compass
+   // rotation compass
    compassCircle.style.transform =
    `rotate(${-normalizedCompass}deg)`;
 
-   // différence planet/user
-   let pointdiff = pointdeg - normalizedCompass;
+   //difference User/Planet
+   let difference = pointdeg - normalizedCompass;
 
-   let rad = pointdiff * (Math.PI / 180);
+   // degrees → radians
+   let rad = difference * (Math.PI / 180);
 
-   let x = rad * Math.sin(rad);
-   let y = -rad * Math.cos(rad);
+   let x = radius * Math.sin(rad);
+   let y = -radius * Math.cos(rad);
 
-   orbit.style.transform =
+   theplanetimage.style.transform =
    `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`;
 }
 
+init();
 //put the planet where needed 
 //ye.
 
-
-init();

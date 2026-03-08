@@ -34,7 +34,7 @@ body {
 
    #image-section{  
       position:absolute;
-      top:30%;
+      bottom:40vh;
       left:50%;
       width:11.5em;
       height:11.5em;
@@ -49,7 +49,6 @@ body {
       left:50%;
       transform:translate(-50%, -50%);
       background-color: rgba(255,0,0,0.2);
-}
    }
 
    #compass-section{

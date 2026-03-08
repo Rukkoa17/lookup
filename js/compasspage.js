@@ -10,8 +10,7 @@ const orbit = document.querySelector("#image-section");
 // azimuth of the planet
 let pointdeg = theplanet.planetAzimuth;
 
-
-
+//placing the planet beofre running the compass
 let radplace = pointdeg  * (Math.PI / 180);
 
 let x = 75 * Math.sin(radplace);
@@ -24,30 +23,26 @@ const userisIOS =
    navigator.userAgent.match(/(iPod|iPhone|iPad)/) && 
    navigator.userAgent.match(/AppleWebKit/);
 
-function init(){
-
-   start();
-
-   if(!userisIOS){
-      window.addEventListener("deviceorientation", handler, true);         
+function init() {
+   start(); //Starting before trying for !IOS ; unsure that both cases are dealed with
+   if (!userisIOS){
+      window.addEventListener("deviceorientationabsolute", handler , true); //Pass to handler before the other functions
    }
 }
 
 function start() {
-   
    if(userisIOS){
-      DeviceOrientationEvent.request.Permission()
-      .then((response)=>{
-
-         if(response === "granted"){
-            window.addEventListener("deviceorientation", handler, true);
+      DeviceOrientationEvent.requestPermission()
+      .then((response) => {
+         if (response === "granted"){
+            window.addEventListener("deviceorientationabsolute" , handler , true); //Pass to handler before the other functions
+         } else {
+            alert("can't LookUP then...");
          }
       })
-      .catch(()=> alert("device not supported"));
+      .catch(() => alert("device isn't supported.."));
    }
 }
-
-
 
 // handler
 function handler(e){
@@ -72,5 +67,6 @@ function handler(e){
    `translate(calc(-50% + ${x}vw), calc(-50% + ${y}vh))`;
 }
 
+init();
 //put the planet where needed 
 //ye.

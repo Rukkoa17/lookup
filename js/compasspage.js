@@ -53,9 +53,9 @@ function handler(e) {
    //difference User/Planet
    let difference = pointdeg - normalizedCompass;
 
-   let rad = radius * (Math.PI / 180);
+   let rad = difference * (Math.PI / 180);
 
-   let x = 75 * Math.sin(rad);
+   let x = 75 * Math.sin(rad); // the val before * should be radius , for esthetic purposes it's not
    let y = -35 * Math.cos(rad);
 
    theplanetimage.style.transform =

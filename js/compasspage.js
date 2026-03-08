@@ -1,71 +1,70 @@
-// planet data
+// --- Planet data ---
 const theplanet = planets[planetID];
 const theplanetimage = document.getElementById("image-of-planet");
 theplanetimage.src = theplanet.planetimg;
 
-// elements
+// --- Elements ---
 const compassCircle = document.querySelector("#compass");
 const orbit = document.querySelector("#image-section");
 
-// azimuth of the planet (e.g. 90 = East)
+// --- Planet azimuth (e.g. 90 = East) ---
 let pointdeg = theplanet.planetAzimuth;
 
-// --- Prevent double-firing from both event types ---
+// --- Hide planet until compass is ready ---
+orbit.style.opacity = "0";
+orbit.style.transition = "opacity 0.6s ease, transform 0.15s ease";
+
+// --- State ---
+let compassReady = false;
 let listenerAttached = false;
+let useAbsolute = false;
 
+// --- Place planet based on current compass heading ---
 function placePlanet(compass) {
-  // Shortest angular difference, range -180 to +180
   let difference = ((pointdeg - compass + 540) % 360) - 180;
-
   let rad = difference * (Math.PI / 180);
-
-  // x: sin(rad) → -1 at left, 0 at center, +1 at right
-  // y: cos(rad) → -1 at top (facing it), +1 at bottom (behind)
-  let x = 40 * Math.sin(rad);   // 40vw max offset left/right
-  let y = -35 * Math.cos(rad);  // 35vh max offset top/bottom
-
+  let x = 40 * Math.sin(rad);
+  let y = -35 * Math.cos(rad);
   orbit.style.transform = `translate(calc(-50% + ${x}vw), calc(-50% + ${y}vh))`;
 }
 
-// Initial static placement (compass = 0, facing North by default)
-placePlanet(0);
-
-// --- Handler ---
+// --- Main handler ---
 function handler(e) {
   let rawComp = e.webkitCompassHeading ?? (360 - e.alpha);
   if (rawComp == null) return;
 
   let compass = rawComp % 360;
 
-  // Rotate the compass rose
-  compassCircle.style.transform = `rotate(${-compass}deg)`;
+  // First real reading — reveal planet already in correct position
+  if (!compassReady) {
+    compassReady = true;
+    orbit.style.opacity = "1";
+  }
 
-  // Move the planet
+  compassCircle.style.transform = `rotate(${-compass}deg)`;
   placePlanet(compass);
 }
 
-// --- Start listening (only attach ONCE) ---
+// --- Attach listeners only once, prefer absolute ---
 function startListening() {
   if (listenerAttached) return;
   listenerAttached = true;
 
-  // Prefer absolute (true North), fall back to relative
-  let useAbsolute = false;
-
   window.addEventListener("deviceorientationabsolute", (e) => {
-    if (e.isTrusted) useAbsolute = true;
+    useAbsolute = true;
     handler(e);
   }, true);
 
   window.addEventListener("deviceorientation", (e) => {
-    if (!useAbsolute) handler(e); // Only use this if absolute isn't firing
+    if (!useAbsolute) handler(e);
   }, true);
 }
 
-// --- iOS permission gate ---
+// --- iOS detection ---
 const isIOS =
   /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
+// --- Init ---
 function init() {
   if (isIOS) {
     const btn = document.createElement("button");
@@ -99,5 +98,3 @@ function init() {
 }
 
 init();
-//put the planet where needed 
-//ye.

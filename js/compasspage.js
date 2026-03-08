@@ -7,8 +7,48 @@ theplanetimage.src = theplanet.planetimg;
 const compassCircle = document.querySelector("#compass");
 const orbit = document.querySelector("#image-section");
 
+
 // azimuth of the planet
-let pointdeg = 90;
+let pointdeg = theplanet.planetAzimuth;
+
+
+
+let radplace = pointdeg  * (Math.PI / 180);
+
+let x = 75 * Math.sin(radplace);
+let y = -30 * Math.cos(radplace);
+
+orbit.style.transform =
+`translate(calc(-50% + ${x}vw), calc(-50% + ${y}vh))`;
+
+const userisIOS =
+   navigator.userAgent.match(/(iPod|iPhone|iPad)/) && 
+   navigator.userAgent.match(/AppleWebKit/);
+
+function init(){
+
+   start();
+
+   if(!userisIOS){
+      window.addEventListener("deviceorientation", handler, true);         
+   }
+}
+
+function start() {
+   
+   if(userisIOS){
+      DeviceOrientationEvent.request.Permission()
+      .then((response)=>{
+
+         if(response === "granted"){
+            window.addEventListener("deviceorientation", handler, true);
+         }
+      })
+      .catch(()=> alert("device not supported"));
+   }
+}
+
+
 
 // handler
 function handler(e){
@@ -26,36 +66,12 @@ function handler(e){
 
    let rad = difference * Math.PI / 180;
 
-   let radius = 150;
-
-   let x = radius * Math.sin(rad);
-   let y = -radius * Math.cos(rad);
+   let x = 75 * Math.sin(rad);
+   let y = -30 * Math.cos(rad);
 
    orbit.style.transform =
-   `translate(-50%, -50%) translate(${x}px, ${y}px)`;
+   `translate(calc(-50% + ${x}vw), calc(-50% + ${y}vh))`;
 }
 
-window.addEventListener("deviceorientation", handler, true);
-
-// test rotation
-setInterval(()=>{
-   pointdeg = (pointdeg + 2) % 360;
-},50);
 //put the planet where needed 
 //ye.
-
-
-/*let test = 0;
-
-setInterval(()=>{
-   test += 5;
-
-   let rad = test  * (Math.PI / 180);
-
-   let x = 75 * Math.sin(rad);
-   let y = -35 * Math.cos(rad);
-
-   theplanetimage.style.transform =
-   `translate(calc(-50% + ${x}vw), calc(-50% + ${y}vh))`;
-},50);
-*/

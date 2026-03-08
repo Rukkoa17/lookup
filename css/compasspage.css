@@ -34,12 +34,11 @@ body {
 
    #image-section{  
       position:absolute;
-      top:55%;
+      top:67.5%;
       left:50%;
       width:11.5em;
       height:11.5em;
       transform:translate(-50%, -50%);
-      background-color:rgba(0,255,0,0.2);
    }
 
    #image-of-planet{
@@ -51,7 +50,7 @@ body {
    }
    
    #compass-section{
-      margin-top: 85%;
+      margin-top: 40vh;
       align-self: center;
    }
 

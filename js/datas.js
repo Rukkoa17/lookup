@@ -5,7 +5,7 @@ const planets = {
    mercure : {
       planetname: "Mercure",
       planetimg: "../imglookup/assets/mercuresktch-Photoroom.png",
-      planetAzimuth : 80
+      planetAzimuth : 140
    },
    venus : {
       planetname : "Venus",

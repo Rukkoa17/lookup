@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   for ( let i = 0 ; i < imgs.length ; i++){
    imgs[i].style.marginTop = `${randomBetween(2, 20)}vh`;
-   imgs[i].style.marginLeft = `${randomBetween(2, 25)}vw`;
+   imgs[i].style.marginLeft = `${randomBetween(2, 23)}vw`;
   }
 });
 

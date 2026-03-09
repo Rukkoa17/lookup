@@ -3,7 +3,7 @@
 :root{
 
    --base-color : rgb(0, 0, 0);
-   --base-colorvar : rgb(37, 37, 37);
+   --base-colorvar : rgba(20, 20, 20, 0.7);
    --text-color: white;
 
    /*Planets "color" to fit better with the panels, surely not the best way to do it , srry
@@ -14,6 +14,6 @@
 .lightmode{
 
    --base-color : rgb(255, 255, 255);
-   --base-colorvar : rgb(199, 194, 194);
+   --base-colorvar : rgba(199, 194, 194, 0.7);
    --text-color: rgb(0, 0, 0);
 }

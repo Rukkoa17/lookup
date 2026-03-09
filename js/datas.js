@@ -9,7 +9,8 @@ const planets = {
    },
    venus : {
       planetname : "Venus",
-      planetimg: "../imglookup/assets/venustransp.png"
+      planetimg: "../imglookup/assets/venustransp.png",
+      planetAzimuth : 29
    }
 }
 

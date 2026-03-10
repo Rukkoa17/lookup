@@ -20,24 +20,13 @@ const observables = {}; //dict filled by aimuthsOfPlanets function
 async function azimuthsOfPlanets() {
 
    navigator.geolocation.getCurrentPosition((position) => {
-      const latitudeuser = position.coords.latitude;
-      const longitudeuser = position.coords.longitude;
+      const lat = position.coords.latitude;
+      const lng = position.coords.longitude;
 
       const now = new Date();
-      const date = now.toISOString().split("T")[0];         // "2026-03-10"
-      const time = now.toISOString().split("T")[1].slice(0,8); // "14:32:00"
+      const date = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
       
-      fetch(
-         "https://api.astronomyapi.com/api/v2/bodies/positions" +
-         `?bodies=mercury` +
-         `&latitude=${latitudeuser}&longitude=${longitudeuser}&elevation=0` +
-         `&from_date=${date}&to_date=${date}&time=${time}`,
-         {
-        headers: {
-          "Authorization": "Basic " + btoa("YOUR_APP_ID:YOUR_APP_SECRET")
-            }
-         }                          // ← fetch options closes here
-      )                     
+      fetch(`https://aa.usno.navy.mil/api/rstt/oneday?date=${date}&coords=${lat},${lng}&tz=0&body=3`)                     
    .then(response => response.json())
    .then(data => {
       console.log(data);

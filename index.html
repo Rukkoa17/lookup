@@ -18,10 +18,20 @@
 
 <body>
 
+   <div id="sidenav" class="allsidenavs">
+      <img width="35" height="35" id="closemenuside" onclick="closeNav()" src="https://img.icons8.com/ios/50/FFFFFF/close-window--v1.png" alt="close-window--v1"/>
+      <!--<img width="50" height="50" src="https://img.icons8.com/ios/50/close-window--v1.png" alt="close-window--v1"/> -->
+
+      <a href="#">Nothing (;</a>
+      <a href="#">Propose</a>
+      <a href="#">Contact</a>
+      
+   </div>
+
    <header id = "header">
       
       <a href="#">
-         <img id ="menu-btn" class="header-btn" width="48" height="48" src="https://img.icons8.com/?size=100&id=aflTW0mA9OBv&format=png&color=FFFFFF" alt="menu">
+         <img id ="menu-btn" class="header-btn" onclick="openNav()" width="48" height="48" src="https://img.icons8.com/?size=100&id=aflTW0mA9OBv&format=png&color=FFFFFF" alt="menu">
       </a>
 
       <h1 id ="text-header">Look UP</h1>
@@ -103,7 +113,7 @@
       </div>
 
       <div id="jupiter-slide" class="carrousel-slide">
-            <img id ="jupiter-sketch" class="sketch"  width="48" height="48" class="planet-sketch" src="./imglookup/webp/LUplanetswebp/jupitersktch-Photoroom.webp" alt="Jupiter">
+            <img id ="jupiter-sketch" class="bigsketch"  width="48" height="48" class="planet-sketch" src="./imglookup/webp/LUplanetswebp/jupitersktch-Photoroom.webp" alt="Jupiter">
             <div id ="jupiter-panel" class="panel">
                <div class="panel-inner">
                   <h2>VISIBLE !</h2>
@@ -119,7 +129,7 @@
       </div>
 
       <div id="saturn-slide" class="carrousel-slide">
-            <img id ="saturn-sketch" class="sketch"  width="48" height="48" class="planet-sketch" src="./imglookup/webp/LUplanetswebp/saturnsktch-Photoroom.webp" alt="Saturn">
+            <img id ="saturn-sketch" class="bigsketch"  width="48" height="48" class="planet-sketch" src="./imglookup/webp/LUplanetswebp/saturnsktch-Photoroom.webp" alt="Saturn">
             <div id ="saturn-panel" class="panel">
                <div class="panel-inner">
                   <h2>VISIBLE !</h2>
@@ -168,8 +178,11 @@
 
    </div>
 
+   <h1 id="pleaseno">Hey , don't use lightmode yet I am too lazy to finish it...</h1>
 
       <script type="text/javascript" src="./js/mainpage.js"></script>
+      <script type="text/javascript" src="./js/sidenav.js"></script>
+
 
    <footer>
       

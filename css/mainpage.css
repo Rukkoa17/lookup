@@ -15,9 +15,10 @@
    .carrousel-slide{
       border-top: 1px solid var(--text-color);
       border-bottom: 1px solid var(--text-color);
-      flex: 0 0 65%;
+      flex: 0 0 80%;
       height: 65vh;
-      overflow:hidden; /*Make the space non-scrollable*/
+      overflow-x:visible; /*Make the space non-scrollable*/
+      overflow-y:hidden; /*Make the space non-scrollable*/
    }
 
    .sketch{
@@ -28,14 +29,21 @@
       transform: scale(1.25)
    }
 
+   .bigsketch{
+      transition: transform .3s;
+   }
+
+   .bigsketch:hover{
+      transform: scale(1.25)
+   }
+
    .panel{
       background-color: var(--base-colorvar);
       opacity: 0;
       display: flex;
       flex-direction: column;
       gap:2vh;
-      margin-top:1vh;
-      margin-left : 5vw;
+      margin : 1vh 0 5vh 5vw;
       text-align: center;
       font-size: 0.9em;
       width: 65%;
@@ -52,10 +60,6 @@
       opacity: 1;
       z-index: 999;
       pointer-events :all;
-   }
-
-   #p-of-panel {
-      color: red;
    }
 
    .panel-lookup-btn{
@@ -92,8 +96,8 @@
    }
 
    #saturn-sketch{
-      height:14em;
-      width:14em
+      height:13.5em;
+      width:13.5em
    }
 
    #uranus-sketch{
@@ -104,6 +108,11 @@
    #neptune-sketch{
       height:7em;
       width:7em
+   }
+
+   #pleaseno{
+      font-size: 1.4em;
+      color: black;
    }
 }
 
@@ -223,3 +232,4 @@
    }
 
 }
+

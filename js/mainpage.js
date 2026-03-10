@@ -8,17 +8,26 @@ function randomBetween(min, max) {
 
 document.addEventListener("DOMContentLoaded", () => {
   const imgs = document.getElementsByClassName("sketch");
+  const bigimgs = document.getElementsByClassName("bigsketch");
+
 
   for ( let i = 0 ; i < imgs.length ; i++){
    imgs[i].style.marginTop = `${randomBetween(2, 20)}vh`;
    imgs[i].style.marginLeft = `${randomBetween(2, 23)}vw`;
+
+  }
+
+  for ( let i = 0 ; i < bigimgs.length ; i++){
+     //Jupiter & Saturn are bigger , so the image is clipped when too close to any border , fix
+   bigimgs[i].style.marginTop= `${randomBetween(6, 20)}vh`;
+   bigimgs[i].style.marginLeft= `${randomBetween(6.5, 16)}vw`; 
   }
 });
 
 
 /*Script for making the little panels pop beside the clicked planet*/
 
-const clickonplanets = document.getElementsByClassName('sketch')
+const clickonplanets = document.querySelectorAll('.sketch , .bigsketch')
 const clickablezone = document.getElementById('carrousel-planets')
 
 let currentpanel = null;

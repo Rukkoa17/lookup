@@ -1,5 +1,40 @@
 @import url('https://fonts.googleapis.com/css2?family=Mansalva&display=swap');
 
+.allsidenavs {
+  display: flex;
+  flex-direction: column;
+  gap: 10vh;
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: var(--base-colorvar);
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.allsidenavs > a {
+   color: rgb(255, 255, 255);
+   align-self: center ;
+   font-size: 1.5em;
+   padding: 10px 50px;
+
+}
+
+#closemenuside{
+   margin-top: -5vh;
+   margin-right: 4vw;
+   align-self: flex-end;
+}
+
+#menu-btn{
+   display: absolute;
+}
+
+
 #header{
    display: flex;
    justify-content: space-between;
@@ -20,7 +55,7 @@
    display: flex;
    justify-content: center;
    align-items: center;
-
+   flex-shrink: 0;
 }
 
 #theme-switch svg{

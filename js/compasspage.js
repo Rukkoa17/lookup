@@ -96,3 +96,5 @@ function init() {
 }
 
 init();
+
+//Sorry for using the help of Claude , I really understood everything but this thing was driving me insane because I couldn't test it on my pc... (22git pushes)

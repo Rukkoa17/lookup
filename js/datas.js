@@ -5,12 +5,12 @@ const planets = {
    mercure : {
       planetname: "Mercure",
       planetimg: "../imglookup/assets/mercuresktch-Photoroom.png",
-      azimuth : 0 //Constant Azimuth so the planet is still showed on compasspage
+      azimuth : 80 //Constant Azimuth so the planet is still showed on compasspage
    },
    venus : {
       planetname : "Venus",
       planetimg: "../imglookup/assets/venustransp.png",
-      azimuth : 0
+      azimuth : 90
    }
 }
 

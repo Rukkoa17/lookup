@@ -24,8 +24,8 @@ async function azimuthsOfPlanets() {
       const longitudeuser = position.coords.longitude;
 
       const now = new Date();
-      const date = now.toISOString().split("T")[0];         // "2026-03-10"
-      const time = now.toISOString().split("T")[1].slice(0,8); // "14:32:00"
+      const date = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
+      const time = `${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}:${String(now.getSeconds()).padStart(2,'0')}`;
       
       fetch(
          "https://api.astronomyapi.com/api/v2/bodies/positions" +

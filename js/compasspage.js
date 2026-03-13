@@ -10,7 +10,7 @@ console.log(theplanet)
 console.log(theplanetimage)
 
 //planet azimuth , in datas.js
-let pointdeg = theplanet.planetAzimuth;
+let pointdeg = theplanet.azimuth;
 
 //hiding planet until compass is ready for it to be accurate
 orbit.style.opacity = "0";
@@ -18,7 +18,7 @@ orbit.style.transition = "opacity 0.6s ease, transform 0.15s ease";
 
 //states
 let compassReady = false;
-let listenerAttached = true;
+let listenerAttached = false;
 let useAbsolute = false;
 
 

@@ -13,7 +13,7 @@ const planets = {
       azimuth : 90
    }
 }
-/*
+
 const observables = {}; //dict filled by aimuthsOfPlanets function
 
 
@@ -58,8 +58,7 @@ console.log(dateUTC)
 console.log(timezone)
 
 console.log(Object.keys(planets).length)
-
+*/
 
 azimuthsOfPlanets()
 
-*/

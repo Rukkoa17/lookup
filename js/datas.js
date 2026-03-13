@@ -5,12 +5,12 @@ const planets = {
    mercure : {
       planetname: "Mercure",
       planetimg: "../imglookup/assets/mercuresktch-Photoroom.png",
-      azimuth : 80 //Constant Azimuth so the planet is still showed on compasspage
+      azimuth : undefined, //undefined until the API help us define it , else error on compass page.
    },
    venus : {
       planetname : "Venus",
       planetimg: "../imglookup/assets/venustransp.png",
-      azimuth : 90
+      azimuth : undefined
    }
 }
 
@@ -38,9 +38,12 @@ async function azimuthsOfPlanets() {
             }
          }                        
       )                     
+
    .then(response => response.json())
    .then(data => {
-      console.log(data);
+      for (let i = 1 ; i < 9 ; i++){
+         console.log(data.data.table.rows[i].cells[0].position.horizontal.azimuth.parseFloat(degrees) /*transform str in int*/);
+      }
 
       }
    ) 

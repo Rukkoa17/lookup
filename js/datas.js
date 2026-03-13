@@ -2,6 +2,13 @@ const parameters = new URLSearchParams(window.location.search);
 const planetID = parameters.get("planet");
 
 const planets = {
+
+   moon :{
+      planetname : "Moon",
+      planetimg: "../imglookup/webp/LUplanetswebp/terrelunesktch-Photoroom.webp",
+      azimuth : azims[0]
+   },
+
    mercure : {
       planetname: "Mercure",
       planetimg: "../imglookup/assets/mercuresktch-Photoroom.png",
@@ -14,7 +21,7 @@ const planets = {
    }
 }
 
-const observables = {}; //dict filled by aimuthsOfPlanets function
+const azims = []; //list filled by aimuzthsOfPlanets function
 
 
 async function azimuthsOfPlanets() {
@@ -41,12 +48,13 @@ async function azimuthsOfPlanets() {
 
    .then(response => response.json())
    .then(data => {
+      console.log(data);   
       for (let i = 1 ; i < 9 ; i++){
-         console.log(data);
          console.log(data.data.table.rows[i].entry.id);
          console.log(parseFloat(data.data.table.rows[i].cells[0].position.horizontal.azimuth.degrees));/*transform str in int*/
+         azims.push(parseFloat(data.data.table.rows[i].cells[0].position.horizontal.azimuth.degrees))
       }
-
+      console.log(azims)
       }
    ) 
 })}

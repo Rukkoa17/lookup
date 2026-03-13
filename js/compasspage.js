@@ -6,6 +6,9 @@ theplanetimage.src = theplanet.planetimg;
 const compassCircle = document.querySelector("#compass");
 const orbit = document.querySelector("#image-section");
 
+console.log(theplanet)
+console.log(theplanetimage)
+
 //planet azimuth , in datas.js
 let pointdeg = theplanet.planetAzimuth;
 
@@ -15,7 +18,7 @@ orbit.style.transition = "opacity 0.6s ease, transform 0.15s ease";
 
 //states
 let compassReady = false;
-let listenerAttached = false;
+let listenerAttached = true;
 let useAbsolute = false;
 
 

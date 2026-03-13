@@ -1,29 +1,6 @@
 const parameters = new URLSearchParams(window.location.search);
 const planetID = parameters.get("planet");
 
-const planets = {
-
-   moon :{
-      planetname : "Moon",
-      planetimg: "../imglookup/webp/LUplanetswebp/terrelunesktch-Photoroom.webp",
-      azimuth : azims[0]
-   },
-
-   mercure : {
-      planetname: "Mercure",
-      planetimg: "../imglookup/assets/mercuresktch-Photoroom.png",
-      azimuth : undefined, //undefined until the API help us define it , else error on compass page.
-   },
-   venus : {
-      planetname : "Venus",
-      planetimg: "../imglookup/assets/venustransp.png",
-      azimuth : undefined
-   }
-}
-
-const azims = []; //list filled by aimuzthsOfPlanets function
-
-
 async function azimuthsOfPlanets() {
 
    navigator.geolocation.getCurrentPosition((position) => {
@@ -58,20 +35,27 @@ async function azimuthsOfPlanets() {
       }
    ) 
 })}
-   
-   
-
-/*
-const dateUTC = new Date().toISOString().slice(0,19);
-var offset = -(new Date().getTimezoneOffset() / 60);
-console.log(offset);
-
-
-console.log(dateUTC)
-console.log(timezone)
-
-console.log(Object.keys(planets).length)
-*/
 
 azimuthsOfPlanets()
 
+const azims = []; //list filled by aimuzthsOfPlanets function
+
+const planets = {
+
+   moon :{
+      planetname : "Moon",
+      planetimg: "../imglookup/webp/LUplanetswebp/terrelunesktch-Photoroom.webp",
+      azimuth : azims[0]
+   },
+
+   mercure : {
+      planetname: "Mercure",
+      planetimg: "../imglookup/assets/mercuresktch-Photoroom.png",
+      azimuth : undefined, //undefined until the API help us define it , else error on compass page.
+   },
+   venus : {
+      planetname : "Venus",
+      planetimg: "../imglookup/assets/venustransp.png",
+      azimuth : undefined
+   }
+}

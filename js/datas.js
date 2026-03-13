@@ -42,6 +42,7 @@ async function azimuthsOfPlanets() {
    .then(response => response.json())
    .then(data => {
       for (let i = 1 ; i < 9 ; i++){
+         console.log(data);
          console.log(data.data.table.rows[i].entry.id);
          console.log(parseFloat(data.data.table.rows[i].cells[0].position.horizontal.azimuth.degrees));/*transform str in int*/
       }

@@ -34,7 +34,7 @@ async function azimuthsOfPlanets() {
          `&from_date=${date}&to_date=${date}&time=${time}`,
          {
         headers: {
-          "Authorization": "Basic " + btoa("fb69b7fb-fea6-4cc5-a336-6b14ce55faa7:43af20480582a4a90cc67032a86f8d66198bceb4c72e5866aaeaeb9fc12e7e28c308be7396f74ca0f701f2c7850fca8577cd0dbc73101affec1d3f8a2da65e06e20fe7c231023b01e1c2d783f39ca70cbf8c4f652351954d6adcf4d3824426390cb1e4bdf3f3e6b26216c91277a325af");
+          "Authorization": "Basic " + btoa("fb69b7fb-fea6-4cc5-a336-6b14ce55faa7:43af20480582a4a90cc67032a86f8d66198bceb4c72e5866aaeaeb9fc12e7e28c308be7396f74ca0f701f2c7850fca8577cd0dbc73101affec1d3f8a2da65e06e20fe7c231023b01e1c2d783f39ca70cbf8c4f652351954d6adcf4d3824426390cb1e4bdf3f3e6b26216c91277a325af")
             }
          }                          // ← fetch options closes here
       )                     

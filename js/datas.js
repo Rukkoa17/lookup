@@ -1,7 +1,57 @@
 const parameters = new URLSearchParams(window.location.search);
 const planetID = parameters.get("planet");
 
-const azims = {}; //list filled by aimuzthsOfPlanets function
+let planets = {
+
+   moon :{
+      planetname : "Moon",
+      planetimg: "../imglookup/webp/LUplanetswebp/terrelunesktch-Photoroom.webp",
+      azimuth : undefined, //undefined until the API help us define it , else error on compass page.
+      visibility : undefined // waiting for API
+   },
+
+   mercury : {
+      planetname: "Mercury",
+      planetimg: "../imglookup/assets/mercuresktch-Photoroom.png",
+   },
+
+   venus : {
+      planetname : "Venus",
+      planetimg: "../imglookup/assets/venustransp.png",
+      azimuth : undefined
+   },
+
+   mars : {
+      planetname : "Mars",
+      planetimg: "../imglookup/assets/marstransp.png",
+      azimuth : undefined
+   },
+
+   jupiter : {
+      planetname : "Jupiter",
+      planetimg: "../imglookup/assets/jupitertransp.png",
+      azimuth : undefined
+   },
+
+   saturn : {
+      planetname : "Saturn",
+      planetimg: "../imglookup/assets/saturntransp.png",
+      azimuth : undefined
+   },
+
+   uranus : {
+      planetname : "Uranus",
+      planetimg: "../imglookup/assets/uranustransp.png",
+      azimuth : undefined
+   },
+
+   neptune : {
+      planetname : "Neptune",
+      planetimg: "../imglookup/assets/neptunetransp.png",
+      azimuth : undefined
+   }
+
+}
 
 async function azimuthsOfPlanets() {
 
@@ -15,7 +65,7 @@ async function azimuthsOfPlanets() {
       
       fetch(
          "https://api.astronomyapi.com/api/v2/bodies/positions" +
-         `?bodies=mercury` +
+         `?bodies=mercury,venus,mars,jupiter,saturn,uranus,neptune,moon` +
          `&latitude=${latitudeuser}&longitude=${longitudeuser}&elevation=0` +
          `&from_date=${date}&to_date=${date}&time=${time}`,
          {
@@ -32,12 +82,12 @@ async function azimuthsOfPlanets() {
          let nameWithApi = data.data.table.rows[i].entry.id;
          let azimWithApi = parseFloat(data.data.table.rows[i].cells[0].position.horizontal.azimuth.degrees)
 
-         let altitudeWithApi = parseFloat(data.data.table.rows[i].cells[0].extraInfo.horizontal.altitude.degrees);
+         let altitudeWithApi = parseFloat(data.data.table.rows[i].cells[0].position.horizontal.altitude.degrees);
          let magnitudeWithApi = (data.data.table.rows[i].cells[0].extraInfo.magnitude); //low magnitude = more shining & visible
 
          let visible = ""; // "red":not visible | "yellow":possible,depends on condition of user (naked eye) | "green": visible (naked eye) 
 
-         if (nameWithApi !== "venus" || "jupiter"){ //Venus & Jupiter shine more , so other coditions for them !
+         if (nameWithApi !== "venus" && nameWithApi !== "jupiter"){ //Venus & Jupiter shine more , so other coditions for them !
 
             if (altitudeWithApi >= 15 && magnitudeWithApi < 4){ 
                visible = "green"; //For a GOOD visibility it needs >15° alt and <4° magnitude
@@ -55,38 +105,14 @@ async function azimuthsOfPlanets() {
             } else {
                visible ="red";
             }
-         }
+         }      
 
-      
-         azims.push({
-            apiname: nameWithApi,
-            apiazim: azimWithApi,
-            apivisible: visible
-         })         
+         planets[nameWithApi].azimuth = azimWithApi,
+         planets[nameWithApi].visibility = visible
       }
-      console.log(azims)
+      console.log(planets)
       }
    ) 
 })}
 
 azimuthsOfPlanets()
-
-const planets = {
-
-   moon :{
-      planetname : "Moon",
-      planetimg: "../imglookup/webp/LUplanetswebp/terrelunesktch-Photoroom.webp",
-      azimuth : azims[0]
-   },
-
-   mercure : {
-      planetname: "Mercure",
-      planetimg: "../imglookup/assets/mercuresktch-Photoroom.png",
-      azimuth : undefined, //undefined until the API help us define it , else error on compass page.
-   },
-   venus : {
-      planetname : "Venus",
-      planetimg: "../imglookup/assets/venustransp.png",
-      azimuth : undefined
-   }
-}

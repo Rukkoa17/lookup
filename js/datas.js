@@ -1,6 +1,8 @@
 const parameters = new URLSearchParams(window.location.search);
 const planetID = parameters.get("planet");
 
+const azims = {}; //list filled by aimuzthsOfPlanets function
+
 async function azimuthsOfPlanets() {
 
    navigator.geolocation.getCurrentPosition((position) => {
@@ -68,8 +70,6 @@ async function azimuthsOfPlanets() {
 })}
 
 azimuthsOfPlanets()
-
-const azims = {}; //list filled by aimuzthsOfPlanets function
 
 const planets = {
 

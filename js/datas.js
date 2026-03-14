@@ -76,7 +76,7 @@ async function azimuthsOfPlanets() {
          let nameWithApi = data.data.table.rows[i].entry.id;
          let azimWithApi = parseFloat(data.data.table.rows[i].cells[0].position.horizontal.azimuth.degrees)
 
-         console.log(i, nameWithApi);
+         console.log(i, nameWithApi); //test
 
          let altitudeWithApi = parseFloat(data.data.table.rows[i].cells[0].position.horizontal.altitude.degrees);
          let magnitudeWithApi = (data.data.table.rows[i].cells[0].extraInfo.magnitude); //low magnitude = more shining & visible

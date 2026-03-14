@@ -7,9 +7,6 @@ window.addEventListener("planetsReady", () => { //Making the site wait for datas
   const compassCircle = document.querySelector("#compass");
   const orbit = document.querySelector("#image-section");
 
-  console.log(theplanet)
-  console.log(theplanetimage)
-
   //planet azimuth , in datas.js
   let pointdeg = theplanet.azimuth;
 

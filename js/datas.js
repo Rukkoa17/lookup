@@ -27,9 +27,40 @@ async function azimuthsOfPlanets() {
    .then(data => {
       console.log(data);   
       for (let i = 1 ; i < 9 ; i++){
-         console.log(data.data.table.rows[i].entry.id);
-         console.log(parseFloat(data.data.table.rows[i].cells[0].position.horizontal.azimuth.degrees));/*transform str in int*/
-         azims.push(parseFloat(data.data.table.rows[i].cells[0].position.horizontal.azimuth.degrees))
+         let nameWithApi = data.data.table.rows[i].entry.id;
+         let azimWithApi = parseFloat(data.data.table.rows[i].cells[0].position.horizontal.azimuth.degrees)
+
+         let altitudeWithApi = parseFloat(data.data.table.rows[i].cells[0].extraInfo.horizontal.altitude.degrees);
+         let magnitudeWithApi = (data.data.table.rows[i].cells[0].extraInfo.magnitude); //low magnitude = more shining & visible
+
+         let visible = ""; // "red":not visible | "yellow":possible,depends on condition of user (naked eye) | "green": visible (naked eye) 
+
+         if (nameWithApi !== "venus" || "jupiter"){ //Venus & Jupiter shine more , so other coditions for them !
+
+            if (altitudeWithApi >= 15 && magnitudeWithApi < 4){ 
+               visible = "green"; //For a GOOD visibility it needs >15° alt and <4° magnitude
+
+            } else if (altitudeWithApi > 15 && magnitudeWithApi < 6 ){
+               visible = "yellow"; //Depending on many conditions but here the planet can maybe be visible
+            } else {
+               visible = "red";
+            }
+         } else {
+            if (altitudeWithApi > 10 && magnitudeWithApi < 0){
+               visible = "green";
+            } else if (altitudeWithApi > 5 && magnitudeWithApi < 2){
+               visible = "yellow";
+            } else {
+               visible ="red";
+            }
+         }
+
+      
+         azims.push({
+            apiname: nameWithApi,
+            apiazim: azimWithApi,
+            apivisible: visible
+         })         
       }
       console.log(azims)
       }
@@ -38,7 +69,7 @@ async function azimuthsOfPlanets() {
 
 azimuthsOfPlanets()
 
-const azims = []; //list filled by aimuzthsOfPlanets function
+const azims = {}; //list filled by aimuzthsOfPlanets function
 
 const planets = {
 

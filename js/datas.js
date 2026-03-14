@@ -18,37 +18,31 @@ let planets = {
    venus : {
       planetname : "Venus",
       planetimg: "../imglookup/assets/venustransp.png",
-      azimuth : undefined
    },
 
    mars : {
       planetname : "Mars",
       planetimg: "../imglookup/assets/marstransp.png",
-      azimuth : undefined
    },
 
    jupiter : {
       planetname : "Jupiter",
       planetimg: "../imglookup/assets/jupitertransp.png",
-      azimuth : undefined
    },
 
    saturn : {
       planetname : "Saturn",
       planetimg: "../imglookup/assets/saturntransp.png",
-      azimuth : undefined
    },
 
    uranus : {
       planetname : "Uranus",
       planetimg: "../imglookup/assets/uranustransp.png",
-      azimuth : undefined
    },
 
    neptune : {
       planetname : "Neptune",
       planetimg: "../imglookup/assets/neptunetransp.png",
-      azimuth : undefined
    }
 
 }
@@ -111,6 +105,7 @@ async function azimuthsOfPlanets() {
          planets[nameWithApi].visibility = visible
       }
       console.log(planets)
+      window.dispatchEvent(new Event("planetsReady"));
       }
    ) 
 })}

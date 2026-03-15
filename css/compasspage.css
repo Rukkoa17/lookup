@@ -25,11 +25,11 @@ body {
       justify-content: flex-start;
    }
    
-      #showingDegrees{
+   #showingDegrees{
          align-self: center;
          margin-top: 3vh;
-         font-size: 7vh;
-      }
+         font-size: 3em;
+   }
    
    .circle{
       height: 100px;

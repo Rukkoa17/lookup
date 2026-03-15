@@ -10,12 +10,15 @@ window.addEventListener("planetsReady", () => { //Making the site wait for datas
 
   //planet azimuth , in datas.js
   let pointdeg = theplanet.azimuth;
+  let pointdegtext = Math.round(pointdeg)
   let colorvisible = theplanet.visibility;
 
   //hiding planet until compass is ready for it to be accurate
   orbit.style.opacity = "0";
   orbit.style.transition = "opacity 0.6s ease, transform 0.15s ease";
-  textdegrees.value = `Look at : ${pointdeg}`
+  textdegrees.textContent = `${pointdegtext}° degrees`
+  textdegrees.style.fontSize = `2em`
+
   //states
   let compassReady = false;
   let listenerAttached = false;

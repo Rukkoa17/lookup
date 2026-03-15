@@ -28,6 +28,11 @@
    margin-top: -5vh;
    margin-right: 4vw;
    align-self: flex-end;
+   cursor: pointer;
+}
+
+#closemenuside:hover{
+   scale: 1.1;
 }
 
 #menu-btn{
@@ -41,6 +46,17 @@
    margin: 3vh;
    padding: 5px;
 }
+
+#text-header-link{
+   cursor: pointer;
+   color: white;
+   text-decoration: none;
+}
+
+#text-header-link:hover{
+   scale: 1.1;
+}
+
 
 .header-btn{
    cursor: pointer;

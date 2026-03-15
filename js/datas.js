@@ -22,27 +22,27 @@ let planets = {
 
    mars : {
       planetname : "Mars",
-      planetimg: "../imglookup/assets/marstransp.png",
+      planetimg: "../imglookup/webp/LUplanetswebp/marssktch-Photoroom.webp",
    },
 
    jupiter : {
       planetname : "Jupiter",
-      planetimg: "../imglookup/assets/jupitertransp.png",
+      planetimg: "../imglookup/webp/LUplanetswebp/jupitersktch-Photoroom.webp",
    },
 
    saturn : {
       planetname : "Saturn",
-      planetimg: "../imglookup/assets/saturntransp.png",
+      planetimg: "../imglookup/webp/LUplanetswebp/saturnsktch-Photoroom.webp",
    },
 
    uranus : {
       planetname : "Uranus",
-      planetimg: "../imglookup/assets/uranustransp.png",
+      planetimg: "../imglookup/webp/LUplanetswebp/uranussktch-Photoroom.webp",
    },
 
    neptune : {
       planetname : "Neptune",
-      planetimg: "../imglookup/assets/neptunetransp.png",
+      planetimg: "../imglookup/webp/LUplanetswebp/neptunesktch-Photoroom.webp",
    }
 
 }

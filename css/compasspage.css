@@ -17,14 +17,20 @@ body {
       opacity: 0.4; /* ← ajuste ici */
       z-index: -1;
    }
-
+   
    #planetandcompass-container{
       height: 80vh;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
    }
-
+   
+      #showingDegrees{
+         align-self: center;
+         margin-top: 3vh;
+         font-size: 7vh;
+      }
+   
    .circle{
       height: 100px;
       width: 100px;
@@ -50,7 +56,7 @@ body {
    }
    
    #compass-section{
-      margin-top: 40vh;
+      margin-top: 30vh;
       align-self: center;
    }
 

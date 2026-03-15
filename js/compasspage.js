@@ -9,6 +9,7 @@ window.addEventListener("planetsReady", () => { //Making the site wait for datas
 
   //planet azimuth , in datas.js
   let pointdeg = theplanet.azimuth;
+  let colorvisible = theplanet.visibility;
 
   //hiding planet until compass is ready for it to be accurate
   orbit.style.opacity = "0";

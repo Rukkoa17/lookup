@@ -108,7 +108,7 @@ async function azimuthsOfPlanets() {
          planets[nameWithApi].azimuth = azimWithApi,
          planets[nameWithApi].visibility = visible
       }
-      console.log(planets)
+      sessionStorage.setItem("planetsData", JSON.stringify(planets));
       window.dispatchEvent(new Event("planetsReady"));
       }
    ) 

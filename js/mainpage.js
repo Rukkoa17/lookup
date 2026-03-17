@@ -1,5 +1,7 @@
 // Main/Selection page script//
 
+window.addEventListener("planetsReady", () => { //Making the site wait for datas collection before starting resulting in errors
+
 /*Script for random positioning of the planets at opening/refresh*/
 
 function randomBetween(min, max) {
@@ -57,8 +59,11 @@ clickablezone.addEventListener("click" , () => {
 })
 
 
-/*Script to assign the planet for the planet specific page
+/*Script to assign the light color for each planet*/
+const planetsdatas = JSON.parse(sessionStorage.getItem("planetsData"))
 
+
+console.log(planetsdatas)
 
 /*Script for scrolling trough the solar system on pc*/
 
@@ -88,3 +93,5 @@ scrollwind.addEventListener("mouseup", () => {
 scrollwind.addEventListener("mouseleave", () => {
    isDragging = false;
 });
+
+})

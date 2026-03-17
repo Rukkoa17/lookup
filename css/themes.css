@@ -17,3 +17,15 @@
    --base-colorvar : rgba(199, 194, 194, 0.7);
    --text-color: rgb(0, 0, 0);
 }
+
+.red {
+   --light-color : rgb(255 , 0 , 0);
+}
+
+.green {
+   --light-color : rgb(0 , 255 , 0);
+}
+
+.yellow {
+   --light-color : rgb(255 , 255 , 0);
+}

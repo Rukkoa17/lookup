@@ -14,6 +14,8 @@
    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mansalva">
 
    <script type="text/javascript" src="./js/lightmode.js" defer></script>
+   <script type="text/javascript" src="./js/datas.js" defer></script> <!--Load up datas for planets-->
+
 </head>
 
 <body>
@@ -51,9 +53,12 @@
       
             <div id ="mercure-panel" class="panel">
                <div class="panel-inner">
-                  <h2>VISIBLE !</h2>
+                  <h2 id ="mercury-name" class="panel-planet-name">Mercury</h2>
+                  <div class="status-container">
+                     <div id="mercury-light" class="status-light"></div>
+                     <h3 id ="mercury-status" class="status-text">Not visible</h3>
+                  </div>
                   <p class ="p-of-panel">
-                     Hehe that's "..." , if you want to find it in your sky go for it! 
                   </p>
                   <button class="panel-lookup-btn" src="./html/compass.html" target="_blank"
                   onclick="window.location.href='./html/compass.html?planet=mercury'">

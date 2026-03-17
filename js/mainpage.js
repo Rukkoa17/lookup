@@ -62,8 +62,10 @@ clickablezone.addEventListener("click" , () => {
 /*Script to assign the light color for each planet*/
 const planetsdatas = JSON.parse(sessionStorage.getItem("planetsData"))
 
+for (const current in planetsdatas){
+   document.getElementById(`${current}-light`).classList.add(current.visibility);
+}
 
-console.log(planetsdatas)
 
 /*Script for scrolling trough the solar system on pc*/
 

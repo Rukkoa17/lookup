@@ -1,6 +1,6 @@
 window.addEventListener("planetsReady", () => { //Making the site wait for datas collection before starting compass resulting in error
   //planet data
-  const theplanet = planets[planetID];
+  const theplanet = planetsdatas[planetID];
   const theplanetimage = document.getElementById("image-of-planet");
   const textdegrees = document.getElementById("showingDegrees");
   theplanetimage.src = theplanet.planetimg;
@@ -11,7 +11,6 @@ window.addEventListener("planetsReady", () => { //Making the site wait for datas
   //planet azimuth , in datas.js
   let pointdeg = theplanet.azimuth;
   let pointdegtext = Math.round(pointdeg)
-  let colorvisible = theplanet.visibility;
 
   //hiding planet until compass is ready for it to be accurate
   orbit.style.opacity = "0";

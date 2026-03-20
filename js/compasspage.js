@@ -1,4 +1,9 @@
+window.addEventListener("planetsReady", () => {
+
   //planet data
+  const planetsdatas = JSON.parse(sessionStorage.getItem("planetsData"))
+
+
   const theplanet = planetsdatas[planetID];
   const theplanetimage = document.getElementById("image-of-planet");
   const textdegrees = document.getElementById("showingDegrees");
@@ -100,5 +105,7 @@
   }
 
   init();
+
+});
 
 //Sorry for using the help of Claude , I really understood everything but this thing was driving me insane because I couldn't test it on my pc... (22git pushes)

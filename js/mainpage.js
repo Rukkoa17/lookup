@@ -56,27 +56,6 @@ clickablezone.addEventListener("click" , () => {
    }
 })
 
-
-/*Script to assign the light color for each planet*/
-const planetsdatas = JSON.parse(sessionStorage.getItem("planetsData"))
-
-for (const current in planetsdatas){
-   let current_light = document.getElementById(`${current}-light`);
-   let current_status_text = document.getElementById(`${current}-status`);
-   //Adding the class of color needed for the light , themes.css is helping here.
-   current_light.classList.add(planetsdatas[current].visibility);   
-   
-   //Depending on the color of the light , changing the text next to it.
-   if (String(current_light.classList).includes("green")){
-      current_status_text.textContent = "Yeah Visible"
-   } else if (String(current_light.classList).includes("yellow")){
-      current_status_text.textContent = "Mhh Maybe"
-   }
-}
-
-
-
-
 /*Script for scrolling trough the solar system on pc*/
 
 const scrollwind = document.getElementById("carrousel-planets")
@@ -93,7 +72,7 @@ scrollwind.addEventListener("mousedown", e => {
 
 scrollwind.addEventListener("mousemove", e => {
    if (!isDragging) return;
-
+   
    let distance = e.clientX - startX;
    scrollwind.scrollLeft = scrollStart - distance;
 });
@@ -104,4 +83,24 @@ scrollwind.addEventListener("mouseup", () => {
 
 scrollwind.addEventListener("mouseleave", () => {
    isDragging = false;
+});
+
+window.addEventListener("planetsReady", () => {
+
+/*Script to assign the light color for each planet*/
+const planetsdatas = JSON.parse(sessionStorage.getItem("planetsData"))
+
+   for (const current in planetsdatas){
+      let current_light = document.getElementById(`${current}-light`);
+      let current_status_text = document.getElementById(`${current}-status`);
+      //Adding the class of color needed for the light , themes.css is helping here.
+      current_light.classList.add(planetsdatas[current].visibility);   
+      
+      //Depending on the color of the light , changing the text next to it.
+      if (String(current_light.classList).includes("green")){
+         current_status_text.textContent = "Yeah Visible"
+      } else if (String(current_light.classList).includes("yellow")){
+         current_status_text.textContent = "Mhh Maybe"
+      }
+   }  
 });

@@ -1,7 +1,5 @@
 // Main/Selection page script//
 
-window.addEventListener("planetsReady", () => { //Making the site wait for datas collection before starting resulting in errors
-
 /*Script for random positioning of the planets at opening/refresh*/
 
 function randomBetween(min, max) {
@@ -21,8 +19,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   for ( let i = 0 ; i < bigimgs.length ; i++){
      //Jupiter & Saturn are bigger , so the image is clipped when too close to any border , fix
-   bigimgs[i].style.marginTop= `${randomBetween(6, 20)}vh`;
-   bigimgs[i].style.marginLeft= `${randomBetween(6.5, 16)}vw`; 
+   bigimgs[i].style.marginTop= `${randomBetween(2, 3)}vh`;
+   bigimgs[i].style.marginLeft= `${randomBetween(6.5, 7)}vw`; 
   }
 });
 
@@ -63,8 +61,20 @@ clickablezone.addEventListener("click" , () => {
 const planetsdatas = JSON.parse(sessionStorage.getItem("planetsData"))
 
 for (const current in planetsdatas){
-   document.getElementById(`${current}-light`).classList.add(current.visibility);
+   let current_light = document.getElementById(`${current}-light`);
+   let current_status_text = document.getElementById(`${current}-status`);
+   //Adding the class of color needed for the light , themes.css is helping here.
+   current_light.classList.add(planetsdatas[current].visibility);   
+   
+   //Depending on the color of the light , changing the text next to it.
+   if (String(current_light.classList).includes("green")){
+      current_status_text.textContent = "Yeah Visible"
+   } else if (String(current_light.classList).includes("yellow")){
+      current_status_text.textContent = "Mhh Maybe"
+   }
 }
+
+
 
 
 /*Script for scrolling trough the solar system on pc*/
@@ -95,5 +105,3 @@ scrollwind.addEventListener("mouseup", () => {
 scrollwind.addEventListener("mouseleave", () => {
    isDragging = false;
 });
-
-})

@@ -13,8 +13,8 @@
    <!--Google Font for the stylesheet-->
    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mansalva">
 
-   <script type="text/javascript" src="./js/lightmode.js" defer></script>
    <script type="text/javascript" src="./js/datas.js" defer></script> <!--Load up datas for planets-->
+   <script type="text/javascript" src="./js/lightmode.js" defer></script>
 
 </head>
 
@@ -70,11 +70,14 @@
 
       <div id="venus-slide" class="carrousel-slide">
             <img id ="venus-sketch" class="sketch" height="100" class="planet-sketch" src="./imglookup/webp/LUplanetswebp/venustransp.webp" alt="Venus">
-            <div id ="mercure-panel" class="panel">
+            <div id ="venus-panel" class="panel">
                <div class="panel-inner">
-                  <h2>VISIBLE !</h2>
-                  <p>
-                     Hehe that's "..." , if you want to find it in your sky go for it! 
+                  <h2 id ="venus-name" class="panel-planet-name">Venus</h2>
+                  <div class="status-container">
+                     <div id="venus-light" class="status-light"></div>
+                     <h3 id ="venus-status" class="status-text">Not visible</h3>
+                  </div>
+                  <p class ="p-of-panel">
                   </p>
                   <button class="panel-lookup-btn" src="./html/compass.html" target="_blank"
                   onclick="window.location.href='./html/compass.html?planet=venus'">
@@ -88,9 +91,12 @@
             <img id ="moon-sketch" class="sketch"  width="48" height="48" class="planet-sketch" src="./imglookup/webp/LUplanetswebp/terrelunesktch-Photoroom.webp" alt="Earth&Moon">
             <div id ="moon-panel" class="panel">
                <div class="panel-inner">
-                  <h2>VISIBLE !</h2>
-                  <p>
-                     Hehe that's the MOON, if you want to find it in your sky go for it! 
+                  <h2 id ="moon-name" class="panel-planet-name">Moon</h2>
+                  <div class="status-container">
+                     <div id="moon-light" class="status-light"></div>
+                     <h3 id ="moon-status" class="status-text">Not visible</h3>
+                  </div>
+                  <p class ="p-of-panel">
                   </p>
                   <button class="panel-lookup-btn" src="./html/compass.html" target="_blank"
                   onclick="window.location.href='./html/compass.html?planet=moon'">
@@ -104,9 +110,12 @@
             <img id ="mars-sketch" class="sketch"  width="48" height="48" class="planet-sketch" src="./imglookup/webp/LUplanetswebp/marssktch-Photoroom.webp" alt="Mars">
             <div id ="mars-panel" class="panel">
                <div class="panel-inner">
-                  <h2>VISIBLE !</h2>
-                  <p>
-                     Hehe that's Mars, if you want to find it in your sky go for it! 
+                 <h2 id ="mars-name" class="panel-planet-name">Mars</h2>
+                  <div class="status-container">
+                     <div id="mars-light" class="status-light"></div>
+                     <h3 id ="mars-status" class="status-text">Not visible</h3>
+                  </div>
+                  <p class ="p-of-panel">
                   </p>
                   <button class="panel-lookup-btn" src="./html/compass.html" target="_blank"
                   onclick="window.location.href='./html/compass.html?planet=mars'">
@@ -120,9 +129,12 @@
             <img id ="jupiter-sketch" class="bigsketch"  width="48" height="48" class="planet-sketch" src="./imglookup/webp/LUplanetswebp/jupitersktch-Photoroom.webp" alt="Jupiter">
             <div id ="jupiter-panel" class="panel">
                <div class="panel-inner">
-                  <h2>VISIBLE !</h2>
-                  <p>
-                     Hehe that's Jupiter, if you want to find it in your sky go for it! 
+                  <h2 id ="jupiter-name" class="panel-planet-name">Jupiter</h2>
+                  <div class="status-container">
+                     <div id="jupiter-light" class="status-light"></div>
+                     <h3 id ="jupiter-status" class="status-text">Not visible</h3>
+                  </div>
+                  <p class ="p-of-panel">
                   </p>
                   <button class="panel-lookup-btn" src="./html/compass.html" target="_blank"
                   onclick="window.location.href='./html/compass.html?planet=jupiter'">
@@ -136,9 +148,12 @@
             <img id ="saturn-sketch" class="bigsketch"  width="48" height="48" class="planet-sketch" src="./imglookup/webp/LUplanetswebp/saturnsktch-Photoroom.webp" alt="Saturn">
             <div id ="saturn-panel" class="panel">
                <div class="panel-inner">
-                  <h2>VISIBLE !</h2>
-                  <p>
-                     Hehe that's Saturn, if you want to find it in your sky go for it! 
+                  <h2 id ="saturn-name" class="panel-planet-name">Saturn</h2>
+                  <div class="status-container">
+                     <div id="saturn-light" class="status-light"></div>
+                     <h3 id ="saturn-status" class="status-text">Not visible</h3>
+                  </div>
+                  <p class ="p-of-panel">
                   </p>
                   <button class="panel-lookup-btn" src="./html/compass.html" target="_blank"
                   onclick="window.location.href='./html/compass.html?planet=saturn'">
@@ -152,9 +167,12 @@
             <img id ="uranus-sketch" class="sketch"  width="48" height="48" class="planet-sketch" src="./imglookup/webp/LUplanetswebp/uranussktch-Photoroom.webp" alt="Uranus">
             <div id ="uranus-panel" class="panel">
                <div class="panel-inner">
-                  <h2>VISIBLE !</h2>
-                  <p>
-                     Hehe that's Uranus, if you want to find it in your sky go for it! 
+                  <h2 id ="uranus-name" class="panel-planet-name">Uranus</h2>
+                  <div class="status-container">
+                     <div id="uranus-light" class="status-light"></div>
+                     <h3 id ="uranus-status" class="status-text">Not visible</h3>
+                  </div>
+                  <p class ="p-of-panel">
                   </p>
                   <button class="panel-lookup-btn" src="./html/compass.html" target="_blank"
                   onclick="window.location.href='./html/compass.html?planet=uranus'">
@@ -168,9 +186,12 @@
             <img id ="neptune-sketch" class="sketch"  width="48" height="48" class="planet-sketch" src="./imglookup/webp/LUplanetswebp/neptunesktch-Photoroom.webp" alt="Neptune">
             <div id ="neptune-panel" class="panel">
                <div class="panel-inner">
-                  <h2>VISIBLE !</h2>
-                  <p>
-                     Hehe that's Neptune, if you want to find it in your sky go for it! 
+                  <h2 id ="neptune-name" class="panel-planet-name">Neptune</h2>
+                  <div class="status-container">
+                     <div id="neptune-light" class="status-light"></div>
+                     <h3 id ="neptune-status" class="status-text">Not visible</h3>
+                  </div>
+                  <p class ="p-of-panel">
                   </p>
                   <button class="panel-lookup-btn" src="./html/compass.html" target="_blank"
                   onclick="window.location.href='./html/compass.html?planet=neptune'">
